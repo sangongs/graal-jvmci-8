@@ -3764,7 +3764,7 @@ class CommandLineFlags {
   develop(intx, DesiredMethodLimit,  8000,                                  \
           "The desired maximum method size (in bytecodes) after inlining")  \
                                                                             \
-  develop(intx, HugeMethodLimit,  8000,                                     \
+  product(intx, HugeMethodLimit,  8000,                                     \
           "Don't compile methods larger than this if "                      \
           "+DontCompileHugeMethods")                                        \
                                                                             \

@@ -140,7 +140,16 @@ bool CompilationPolicy::can_be_compiled(methodHandle m, int comp_level) {
   assert(WhiteBoxAPI || comp_level == CompLevel_all || is_compile(comp_level), "illegal compilation level");
 
   if (m->is_abstract()) return false;
-  if (DontCompileHugeMethods && m->code_size() > HugeMethodLimit) return false;
+
+  bool methodDontCompileHugeMethods = DontCompileHugeMethods; // true;
+  intx methodHugeMethodLimit = HugeMethodLimit; // 8000;
+  // if (! CompilerOracle::has_option_value(m, "DontCompileHugeMethods", methodDontCompileHugeMethods)) {
+  //   methodDontCompileHugeMethods = DontCompileHugeMethods;
+  // }
+  // if (! CompilerOracle::has_option_value(m, "HugeMethodLimit", methodHugeMethodLimit)) {
+  //   methodHugeMethodLimit = HugeMethodLimit;
+  // }
+  if (methodDontCompileHugeMethods && m->code_size() > methodHugeMethodLimit) return false;
 
   // Math intrinsics should never be compiled as this can lead to
   // monotonicity problems because the interpreter will prefer the

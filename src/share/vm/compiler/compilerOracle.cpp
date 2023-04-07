@@ -638,7 +638,7 @@ void CompilerOracle::parse_from_line(char* line) {
       if (*lp == '.')  *lp = '/';   // dots build the package prefix
       if (*lp == ':')  *lp = ' ';
     }
-    if (*lp == ',' || *lp == '.')  *lp = ' ';
+    if (*lp == ',' || *lp == '.' || *lp == '@')  *lp = ' ';
   }
 
   char* original_line = line;

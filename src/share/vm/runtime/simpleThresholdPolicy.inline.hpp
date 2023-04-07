@@ -58,6 +58,10 @@ bool SimpleThresholdPolicy::should_compile_at_level_simple(Method* method) {
       method->is_constant_getter()) {
     return true;
   }
+  // bool simpleMethod = false;
+  // if (CompilerOracle::has_option_value(method, "simple", simpleMethod) && simpleMethod) {
+  //   return true;
+  // }
 #if INCLUDE_JVMCI
   if (UseJVMCICompiler && TieredCompilation) {
     AbstractCompiler* comp = CompileBroker::compiler(CompLevel_full_optimization);
